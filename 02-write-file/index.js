@@ -9,7 +9,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-rl.write('Do you like pizza?\n');
+rl.write('Name your favorite movies:\n');
 rl.on('line', createLine);
 rl.on('close', close);
 
@@ -32,6 +32,6 @@ function appendFile(input) {
 
 function close() {
   rl.removeListener('line', createLine);
-  rl.write('Bye-bye!\n');
+  rl.write('We are done for today. Bye-bye!\n');
   rl.pause();
 }
