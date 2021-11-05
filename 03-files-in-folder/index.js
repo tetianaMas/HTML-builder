@@ -39,10 +39,7 @@ function getExt(name) {
 }
 
 function getSize(size) {
-  const BYTES_IN_KB = 1024;
-  const NUMBER_AFTER_POINT = 3;
-
-  return (size / BYTES_IN_KB).toFixed(NUMBER_AFTER_POINT) + 'kb';
+  return size + 'B';
 }
 
 readFiles();
