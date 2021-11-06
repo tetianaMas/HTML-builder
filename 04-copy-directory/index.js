@@ -28,7 +28,7 @@ async function removeFiles(copyTo) {
     if (files.length) {
       files.forEach(async file => {
         try {
-          const pathToFile = path.resolve(copyTo, file.name);
+          const pathToFile = path.join(copyTo, file.name);
           if (file.isDirectory()) {
             await removeDirectory(pathToFile);
           } else {
@@ -62,8 +62,8 @@ function copyFiles(files, copyFrom, copyTo) {
     try {
       await fs.mkdir(copyTo, { recursive: true });
       await fs.copyFile(
-        path.resolve(copyFrom, file.name),
-        path.resolve(copyTo, file.name)
+        path.join(copyFrom, file.name),
+        path.join(copyTo, file.name)
       );
     } catch (err) {
       console.log(err);
@@ -75,8 +75,8 @@ function copyFolder(folders, copyFrom, copyTo) {
   folders.forEach(async folder => {
     try {
       await copyDir(
-        path.resolve(copyFrom, folder.name),
-        path.resolve(copyTo, folder.name)
+        path.join(copyFrom, folder.name),
+        path.join(copyTo, folder.name)
       );
     } catch (err) {
       console.log(err);

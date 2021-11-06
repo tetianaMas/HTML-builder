@@ -80,7 +80,7 @@ async function createHtml() {
     const components = files.filter(
       file => file.isFile() && path.extname(file.name) === '.html'
     );
-    components.forEach(async (component, index) => {
+    components.forEach(async component => {
       try {
         const currentPath = path.join(pathToComponents, component.name);
         const componentText = await fs.readFile(currentPath, {
@@ -88,6 +88,10 @@ async function createHtml() {
         });
         const componentName = `{{${getName(component.name)}}}`;
         template = template.replace(componentName, componentText);
+        await fs.rm(path.join(pathToBundle, 'index.html'), {
+          force: true,
+          recursive: true,
+        });
         await fs.appendFile(path.join(pathToBundle, 'index.html'), template, {
           flag: 'w',
         });

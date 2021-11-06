@@ -12,6 +12,7 @@ const rl = readline.createInterface({
 rl.write('Name your favorite movies:\n');
 rl.on('line', createLine);
 rl.on('close', close);
+process.on('SIGINT', close);
 
 function createLine(line) {
   const answer = line.trim().toLowerCase();

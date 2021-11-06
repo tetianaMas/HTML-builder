@@ -10,8 +10,8 @@ async function readFiles() {
       if (file.isFile()) {
         const name = getName(file.name);
         const ext = getExt(file.name);
-        const stat = await fs.stat(path.resolve(pathToSecretFolder, file.name));
-        const size = getSize(stat.size);
+        const stat = await fs.stat(path.join(pathToSecretFolder, file.name));
+        const size = stat.size + 'B';
         process.stdout.write(`${name} - ${ext} - ${size}\n`);
       }
     });
@@ -36,10 +36,6 @@ function getExt(name) {
   if (ext) {
     return ext[0];
   }
-}
-
-function getSize(size) {
-  return size + 'B';
 }
 
 readFiles();
