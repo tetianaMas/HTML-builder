@@ -26,7 +26,7 @@ function createLine(line) {
 function appendFile(input) {
   fs.appendFile(pathToOutPutFile, input, function (err) {
     if (err) {
-      throw err;
+      console.log(err);
     }
   });
 }
