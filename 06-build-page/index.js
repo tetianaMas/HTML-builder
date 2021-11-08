@@ -86,7 +86,10 @@ async function createHtml() {
         const componentText = await fs.readFile(currentPath, {
           encoding: 'utf-8',
         });
-        const componentName = `{{${getName(component.name)}}}`;
+        const componentName = new RegExp(
+          `{{${getName(component.name)}}}`,
+          'gm'
+        );
         template = template.replace(componentName, componentText);
         await fs.rm(path.join(pathToBundle, 'index.html'), {
           force: true,
