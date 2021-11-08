@@ -11,7 +11,7 @@ async function readFiles() {
         const name = getName(file.name);
         const ext = getExt(file.name);
         const stat = await fs.stat(path.join(pathToSecretFolder, file.name));
-        const size = stat.size + 'B';
+        const size = stat.size + 'b';
         process.stdout.write(`${name} - ${ext} - ${size}\n`);
       }
     });

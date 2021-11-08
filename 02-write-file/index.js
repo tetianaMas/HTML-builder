@@ -10,6 +10,7 @@ const rl = readline.createInterface({
 });
 
 rl.write('Name your favorite movies:\n');
+appendFile();
 rl.on('line', createLine);
 rl.on('close', close);
 process.on('SIGINT', close);
@@ -23,7 +24,7 @@ function createLine(line) {
   }
 }
 
-function appendFile(input) {
+function appendFile(input = '') {
   fs.appendFile(pathToOutPutFile, input, function (err) {
     if (err) {
       console.log(err);
